@@ -8,7 +8,7 @@ public class ExcelData implements DataHandler {
 	public String[][] getData(String fileName) {
 		String[][] data = null;
 		try {
-			XSSFWorkbook workbook = new XSSFWorkbook("src/main/resource/data/" + fileName + ".xlsx");
+			XSSFWorkbook workbook = new XSSFWorkbook("src/main/resources/data/" + fileName + ".xlsx");
 			XSSFSheet sheet = workbook.getSheetAt(0);
 			int rowCount = sheet.getLastRowNum();
 			int columnCount = sheet.getRow(0).getLastCellNum();

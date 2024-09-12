@@ -47,6 +47,11 @@
 			<version>${apache.poi.ooxml.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>${opencsv.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${cucumber.jvm.version}</version>
