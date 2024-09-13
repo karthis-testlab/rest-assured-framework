@@ -1,4 +1,4 @@
-package com.framework.pojos;
+package com.framework.pojos.desrialization;
 
 public class RootCallerId {
 	

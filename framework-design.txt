@@ -1,0 +1,66 @@
+.
+├── allure-results
+│   ├── 0a060900-430e-4a21-a750-b0bd336b9c71-container.json
+│   ├── 1513b97e-e668-4ac4-97ee-dbfaa025a224-result.json
+│   └── history
+│       ├── categories-trend.json
+│       ├── duration-trend.json
+│       ├── history-trend.json
+│       ├── history.json
+│       └── retry-trend.json
+├── pom.xml
+├── reports-html
+│   └── allure
+│   └── extents
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── framework
+    │   │           ├── data
+    │   │           │   └── utils
+    │   │           │       ├── CsvData.java
+    │   │           │       ├── DataEngine.java
+    │   │           │       ├── DataFactory.java
+    │   │           │       ├── DataHandler.java
+    │   │           │       ├── ExcelData.java
+    │   │           │       └── TestData.java
+    │   │           ├── pojos
+    │   │           │   ├── desrialization
+    │   │           │   │   ├── CallerId.java
+    │   │           │   │   ├── Company.java
+    │   │           │   │   ├── OpenedBy.java
+    │   │           │   │   ├── Result.java
+    │   │           │   │   ├── ResultCallerId.java
+    │   │           │   │   ├── Root.java
+    │   │           │   │   ├── RootCallerId.java
+    │   │           │   │   └── SysDomain.java
+    │   │           │   └── serialization
+    │   │           │       └── CreateIncident.java
+    │   │           ├── servicenow
+    │   │           │   └── services
+    │   │           │       └── IncidentService.java
+    │   │           ├── testng
+    │   │           │   └── api
+    │   │           │       └── TestNGHooks.java
+    │   │           └── utils
+    │   │               └── PropertiesHandler.java
+    │   └── resources
+    │       ├── data
+    │       │   ├── create-incidents.xlsx
+    │       │   └── incidents.csv
+    │       └── request-payloads
+    │           └── create-incident.json
+    └── test
+        ├── java
+        │   └── com
+        │       └── framework
+        │           └── servicenow
+        │               └── tests
+        │                   └── CreateIncidentsTest.java
+        └── resources
+            ├── allure.properties
+            ├── config.properties
+            └── secret.properties
+
+39 directories, 127 files

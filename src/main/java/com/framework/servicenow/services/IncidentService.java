@@ -1,10 +1,14 @@
 package com.framework.servicenow.services;
 
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
 
-import com.framework.pojos.Root;
-import com.framework.pojos.RootCallerId;
+import java.util.List;
+import java.util.Map;
+
+import com.framework.pojos.desrialization.Root;
+import com.framework.pojos.desrialization.RootCallerId;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import io.restassured.response.Response;
 
@@ -17,25 +21,45 @@ public class IncidentService {
 	private RootCallerId rootCallerId = null;
 	
 	private Response createIncident(String payload) {
-		return given()
-		           .auth()
-		           .basic("admin", "vW0eDfd+A0V-")
-		           .headers("Content-Type", "application/json")
-		           .log().all()
+		return given()		           
+		           .headers("Content-Type", "application/json")		           
 		           .when()
 		           .body(payload)
-		           .post("https://dev262949.service-now.com/api/now/table/incident");
+		           .post("/incident");
 	}
 	
 	private Response createIncidentWithCallerId(String payload) {
-		return given()
-		           .auth()
-		           .basic("admin", "vW0eDfd+A0V-")
+		return given()		          
 		           .headers("Content-Type", "application/json")
-		           .log().all()
 		           .when()
 		           .body(payload)
-		           .post("https://dev262949.service-now.com/api/now/table/incident");
+		           .post("/incident");
+	}
+	
+	private Response getIncidents() {
+		return given()
+				   .when()
+				   .get("/incident");
+	}
+	
+	private Response getIncidents(Map<String, String> map) {
+		return given()
+				   .queryParams(map)
+				   .when()
+				   .get("/incident");
+	}
+	
+	private Response getIncident(String sysId) {
+		return given()
+				   .when()
+				   .get("/incident/"+sysId);
+	}
+	
+	private Response getIncident(String sysId, Map<String, String> map) {
+		return given()
+				   .queryParams(map)
+				   .when()
+				   .get("/incident/"+sysId);
 	}
 	
 	public IncidentService create(String payload) {
@@ -47,6 +71,26 @@ public class IncidentService {
 	public IncidentService createWithCallerId(String payload) {
 		response = createIncidentWithCallerId(payload);
 		rootCallerId = createIncidentWithCallerId(payload).as(RootCallerId.class);
+		return this;
+	}
+	
+	public IncidentService get() {
+		response = getIncidents();
+		return this;
+	}
+	
+	public IncidentService get(String sys_id) {
+		response = getIncident(sys_id);
+		return this;
+	}
+	
+	public IncidentService get(Map<String, String> map) {
+		response = getIncidents(map);
+		return this;
+	}
+	
+	public IncidentService get(String sys_id, Map<String, String> map) {
+		response = getIncident(sys_id, map);
 		return this;
 	}
 	
@@ -99,6 +143,19 @@ public class IncidentService {
 	
 	public IncidentService validateCallerIdLinkIsNotEmpty() {
 		assertThat(rootCallerId.getResult().getCaller_id().getLink(), is(not(emptyString())));
+		return this;
+	}
+	
+	public IncidentService validateResultSize(int size) {
+		assertThat(response.body().jsonPath().getList("result"), hasSize(size));
+		return this;
+	}
+	
+	public IncidentService validateCategoryValue(String value) {
+		List<String> categories = response.body().jsonPath().getList("result.category");
+		for (String category : categories) {
+			assertThat(category, equalTo("hardware"));
+		}
 		return this;
 	}
 

@@ -1,6 +1,6 @@
-package com.framework.pojos;
+package com.framework.pojos.desrialization;
 
-public class ResultCallerId {
+public class Result {
 
 	private String parent;
 	private String made_sla;
@@ -44,7 +44,7 @@ public class ResultCallerId {
 	private String business_duration;
 	private String group_list;
 	private String work_end;
-	private CallerId caller_id;
+	private String caller_id;
 	private String reopened_time;
 	private String resolved_at;
 	private String approval_set;
@@ -76,7 +76,7 @@ public class ResultCallerId {
 	private String incident_state;
 	private String urgency;
 	private String problem_id;
-	private Company company;
+	private String company;
 	private String reassignment_count;
 	private String activity_due;
 	private String assigned_to;
@@ -431,11 +431,11 @@ public class ResultCallerId {
 		this.work_end = work_end;
 	}
 
-	public CallerId getCaller_id() {
+	public String getCaller_id() {
 		return caller_id;
 	}
 
-	public void setCaller_id(CallerId caller_id) {
+	public void setCaller_id(String caller_id) {
 		this.caller_id = caller_id;
 	}
 
@@ -687,11 +687,11 @@ public class ResultCallerId {
 		this.problem_id = problem_id;
 	}
 
-	public Company getCompany() {
+	public String getCompany() {
 		return company;
 	}
 
-	public void setCompany(Company company) {
+	public void setCompany(String company) {
 		this.company = company;
 	}
 

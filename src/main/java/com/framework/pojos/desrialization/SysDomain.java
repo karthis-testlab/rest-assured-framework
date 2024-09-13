@@ -1,6 +1,6 @@
-package com.framework.pojos;
+package com.framework.pojos.desrialization;
 
-public class OpenedBy {
+public class SysDomain {
 	
 	private String link;
 	private String value;
@@ -19,6 +19,6 @@ public class OpenedBy {
 
 	public void setValue(String value) {
 		this.value = value;
-	}	
+	}
 
 }

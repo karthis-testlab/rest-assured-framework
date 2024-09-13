@@ -2,8 +2,10 @@ package com.framework.servicenow.tests;
 
 import org.testng.annotations.Test;
 import com.framework.servicenow.services.IncidentService;
+import com.framework.testng.api.TestNGHooks;
+import com.framework.utils.PropertiesHandler;
 
-public class CreateIncidentsTest {
+public class CreateIncidentsTest extends TestNGHooks {
 	
 	@Test
 	public void userShouldAbleToCreateNewIncident() {
@@ -38,6 +40,24 @@ public class CreateIncidentsTest {
 		    .validateDescription("Short Description 001")
 		    .validateCallerIdLinkIsNotEmpty()
 		    .validateCallerIdValue("681ccaf9c0a8016400b98a06818d57c7");
+	}
+	
+	@Test
+	public void userShouldAbleToGetAllIncidents() {
+		new IncidentService()
+		    .get()
+		    .validateStatusCode(200)
+		    .validateContentType("application/json");
+	}
+	
+	@Test
+	public void userShouldAbleToGetAllIncidentsQueryParam() {
+		new IncidentService()
+		    .get(PropertiesHandler.queryParamsMap("incident-service")) 		  
+		    .validateStatusCode(200)
+		    .validateContentType("application/json")
+		    .validateResultSize(10)
+		    .validateCategoryValue("hardware");
 	}
 
 }

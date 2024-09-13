@@ -1,6 +1,6 @@
-package com.framework.pojos;
+package com.framework.pojos.desrialization;
 
-public class Company {
+public class OpenedBy {
 	
 	private String link;
 	private String value;
@@ -19,6 +19,6 @@ public class Company {
 
 	public void setValue(String value) {
 		this.value = value;
-	}
+	}	
 
 }

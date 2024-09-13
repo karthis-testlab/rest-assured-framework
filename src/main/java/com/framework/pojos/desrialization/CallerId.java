@@ -1,6 +1,6 @@
-package com.framework.pojos;
+package com.framework.pojos.desrialization;
 
-public class SysDomain {
+public class CallerId {
 	
 	private String link;
 	private String value;
